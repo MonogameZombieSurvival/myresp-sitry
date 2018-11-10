@@ -24,14 +24,31 @@ namespace Game2
 
         private Player player;
         private SpriteFont font;
+        private SpriteFont WaveTimer;
+        private SpriteFont KillCount;
         private Texture2D collisionTexture;
         //private Song backgroundMusic;
         private Texture2D backgroundImg;
+        Random rand = new Random();
+
+        GameTimer gametimer;
+        GameTimer Spawnspeed;
+        
+      
+        private int WaveTimeOutPut;
+        private int level =1;     
+        static private int kills;
+        public int Kills
+        {
+            get {
+                return kills;
+
+            }
+        }
+        private double spawtimeBetwenneEnemys; 
 
         private static GraphicsDeviceManager graphics;
-
-        int timer = 0;
-
+       
         public static Rectangle ScreenSize
         {
             get
@@ -39,7 +56,12 @@ namespace Game2
                 return graphics.GraphicsDevice.Viewport.Bounds;
             }
         }
+        public  static void addKill()
+        {
+            kills += 1;
+            
 
+        }
     
 
         
@@ -121,24 +143,28 @@ namespace Game2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
+            WaveTimer = Content.Load<SpriteFont>("WaveTimer");
+            KillCount = Content.Load<SpriteFont>("KillCount");
 
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
 
-            gameObjects.Add(new Asteroid(0, 0, Content));
+            Spawnspeed = new GameTimer();
+            gametimer = new GameTimer();
+           
             player = new Player(Content);
             gameObjects.Add(player);
 
 
             //Adds randomized asteroids to game
-            Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                gameObjects.Add(new Asteroid(Content));
-                Thread.Sleep(100);
-            }
+           
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    gameObjects.Add(new Enemy(Content));
+            //    Thread.Sleep(100);
+            //}
 
-            gameObjects.Add(new Asteroid(200, 200,Content));
+          
 
 
         }
@@ -154,23 +180,32 @@ namespace Game2
             // TODO: Unload any non ContentManager content here
         }
 
-        public void SpawnAnymens(int spawnCircle)
-        {
-            
-            spawnCircle *= 60;
-            if(timer == spawnCircle)
-            {
-                
-                
-                    gameObjects.Add( new Asteroid(200, 200, Content));
-                    
-                
-                timer = 0;
-            }
 
-            timer += 1;
+
+        /// <summary>
+        /// SpawnAynemeas
+        /// </summary>
+        public void SpawnAnymens(double spawnCircle)
+        {          
+            if(spawnCircle <=0.0001)
+            {
+              
+                     
+                    gameObjects.Add(new Enemy(rand.Next(0, 400), rand.Next(0, 400), Content));                                       
+            }          
         }
 
+        public void Setlevel(int WavetimeOutput)
+        {
+            if(WaveTimeOutPut == 0)
+            {
+                level += 1;
+            }
+
+        }
+       
+        //}
+       
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -182,11 +217,24 @@ namespace Game2
                 Exit();
 
 
-          //  SpawnAnymens(10);
+            if (level == 1)
+            {
 
-          
+                spawtimeBetwenneEnemys = Spawnspeed.gameTimerMIlilesecs(gameTime, 0.5, 0.01);
+                SpawnAnymens(spawtimeBetwenneEnemys);
+            }
+            if (level == 2)
+            {
 
-           
+                spawtimeBetwenneEnemys = Spawnspeed.gameTimerMIlilesecs(gameTime, 0.2, 0.01);
+
+                SpawnAnymens(spawtimeBetwenneEnemys);
+            }
+            WaveTimeOutPut = gametimer.gameTimerSec(gameTime, 30);// level clock// spawn clock
+
+            Setlevel(WaveTimeOutPut);
+            
+                
             foreach (GameObject go in gameObjects)
             {
                 go.Update(gameTime);
@@ -215,6 +263,8 @@ namespace Game2
 
             }
 
+
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -233,7 +283,9 @@ namespace Game2
 #endif
             }
 
-            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
+            spriteBatch.DrawString(WaveTimer, $"Next wave in:{WaveTimeOutPut} level:{level}", new Vector2(600, 5), Color.White);   
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(5,5), Color.White);
+            spriteBatch.DrawString(KillCount, $"KilleCount:{Kills}", new Vector2(1160, 5), Color.Red);
             
             spriteBatch.End();
             base.Draw(gameTime);

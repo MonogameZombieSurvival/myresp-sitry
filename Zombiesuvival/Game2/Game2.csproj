@@ -69,16 +69,18 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Asteroid.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="BloodeEffect.cs" />
     <Compile Include="Bloood.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Explosion.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="GameTimer.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="AnimatedGameObject.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerBlood.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

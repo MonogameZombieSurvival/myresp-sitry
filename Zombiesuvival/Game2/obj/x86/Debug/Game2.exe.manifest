@@ -31,14 +31,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Game2.exe" size="163240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Game2.exe" size="165288">
       <assemblyIdentity name="Game2" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oEjk1PzmR4xpKKMB9ac3XxvKiyYmdxUs4wpr3E8Mkck=</dsig:DigestValue>
+        <dsig:DigestValue>1kMw2aR+mBqWPakHnhGuJD4Kli0N3ScqZmfRj0SB3Q0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -552,6 +552,15 @@
       <dsig:DigestValue>MM0LAcZOmpdlcGEa5j1F5gB/XynkhLkTK5h1FXyZ7ps=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\KillCount.xnb" size="21524">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>28Wj1X6hDYSKhPNpV9F7VgSpLZ/TQWN4srOSDh9mPCE=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\kisspng-animation.xnb" size="16777301">
     <hash>
       <dsig:Transforms>
@@ -577,6 +586,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>HOTxiDALMhEVeM0C7haytwctplcnkBCNE74DmRY+stA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\PlayerBlood.xnb" size="135133">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rLVbf2f8fKVHli/xlmSH/2Y57RJAhgQ+CaPd5iejkYY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\playerImg.xnb" size="9061">
@@ -631,6 +649,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>oRBPBTiCY7tlg35CiCxmEYgKGNWMV9HhyMby7NKQ04c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\WaveTimer.xnb" size="21524">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>28Wj1X6hDYSKhPNpV9F7VgSpLZ/TQWN4srOSDh9mPCE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\zombiesmall.xnb" size="18285">

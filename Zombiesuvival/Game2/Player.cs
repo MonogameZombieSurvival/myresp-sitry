@@ -17,6 +17,14 @@ namespace Game2
         private const float rotationSpeed = MathHelper.Pi;
         public Vector2 direction = new Vector2(0,-1);
         private double lastShoot = 0;
+        private int killCount;
+        public int KillCount
+        {
+            get
+            {
+                return KillCount;
+            }
+        }
         public Vector2 playerPosition {
             get
             {
@@ -98,8 +106,14 @@ namespace Game2
 
         public override void DoCollision(GameObject otherObject)
         {
-            if (otherObject is Asteroid)
+            if (otherObject is Enemy)
             {
+
+                PlayerBlood playerBlood = new PlayerBlood(1, position, content);
+                GameWorld.AddGameObject(playerBlood);
+
+
+
                 health--;
             }
 
